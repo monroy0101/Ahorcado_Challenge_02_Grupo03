@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Ahorcado</title>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" target="_blank">Juego Ahorcado</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" id="botonMenu"
+            aria-label="Mostrar u ocultar menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Jugar&nbsp;<i class="fa fa-home"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="words.html">Agregar Palabras&nbsp;<i class="fa fa-home"></i></a>
+                </li>
+            </ul>
+                    </div>
+    </nav>
+    <main class="container-fluid">
+        <div class="row" id="app">
+            <div class="col-12 text-center">
+                <h1 class="text-danger">Juego Ahorcado - Challenge 02</h1>
+                <h3 class="displayed-word">Palabra: <br>{{displayWord()}}</h3>
+                <p class="h4 text-danger">Intentos restantes: {{remainingAttempts}}</p>
+                <br>
+                <img class="img-fluid" :src="imagePath()" alt="">
+            </div>
+            <div class="col-12 text-center">
+                <button :disabled="letter.disabled" @click="attemptWithLetter(letter.letter)" v-for="letter in letters"
+                    class="btn btn-dark m-1 btn-lg">{{letter.letter}}</button>
+            </div>
+        </div>
+    </main>
+    <footer class="px-2 py-2 fixed-bottom bg-dark">
+        <span class="text-muted">Por:
+            <span> Carlos Flores</span>
+        </span>
+    </footer>
+</body>
+<script src="js/vue.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/game.js"></script>
+</html>

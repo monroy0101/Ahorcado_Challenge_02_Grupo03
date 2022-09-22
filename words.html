@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Ahorcado - Challenge 02</title>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" target="_blank">Juego Ahorcado</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" id="botonMenu"
+            aria-label="Mostrar u ocultar menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Jugar&nbsp;<i class="fa fa-home"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="words.html">Agregar Palabra&nbsp;<i class="fa fa-home"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container-fluid">
+        <div class="row" id="app">
+            <div class="col-12 text-center">
+                <h1>Agregar o quitar palabras</h1>
+            </div>
+            <div class="col-12 text-center">
+                <div class="form-inline mb-2">
+                    <label class="mr-2" for="newWord">Nueva Palabra:</label>
+                    <input @keyup="deleteWhiteSpaces()" placeholder="Escriba la pabalra aqui..." class="m-2 form-control"
+                        id="newWord" type="text" v-model="newWord">
+                    <button @click="saveWord()" :disabled="newWord.length <= 0" class="btn btn-success">Guardar</button>
+                </div>
+            </div>
+            <div class="col-12 text-center">
+                <div class="jumbotron jumbotron-fluid" v-show="!words.length">
+                    <div class="container">
+                        <h1 class="display-4">Intentos restantes</h1>
+                        <p class="lead">Por favor, agregue algunas palabras utilizando el campo de arriba</p>
+                    </div>
+                </div>
+                <div class="table-responsive" v-show="words.length">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Palabra</th>
+                                <th>Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(word, index) in words">
+                                <td>{{word}}</td>
+                                <td>
+                                    <button @click="deleteWord(index)" class="btn btn-outline-danger">🗑️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="px-2 py-2 fixed-bottom bg-dark">
+        <span class="text-muted">Por: Carlos Flores
+            /span>
+    </footer>
+</body>
+<script src="js/vue.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/manage_words.js"></script>
+
+</html>
