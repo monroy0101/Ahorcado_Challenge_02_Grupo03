@@ -1,0 +1,10 @@
+body {
+    padding-bottom: 80px;
+    padding-top: 80px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.displayed-word {
+    letter-spacing: 4px;
+}
